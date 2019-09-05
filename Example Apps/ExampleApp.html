@@ -1,60 +1,317 @@
 <!doctype html>
-<html><head>
-    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<html>
+
+<head>
+	<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0">
 	<style type='text/css'>
-		html { font-family:Helvetica; color:#222; }
-		h1 { color:steelblue; font-size:24px; margin-top:24px; }
-		button { margin:0 3px 10px; font-size:12px; }
-		.logLine { border-bottom:1px solid #ccc; padding:4px 2px; font-family:courier; font-size:11px; }
+		html {
+			font-family: Helvetica;
+			color: #222;
+		}
+
+		h1 {
+			color: steelblue;
+			font-size: 24px;
+			margin-top: 24px;
+		}
+
+		button {
+			margin: 0 3px 10px;
+			font-size: 12px;
+		}
+
+		.logLine {
+			border-bottom: 1px solid #ccc;
+			padding: 4px 2px;
+			font-family: courier;
+			font-size: 11px;
+		}
+
+		.jsondiffpatch-delta {
+			font-family: 'Bitstream Vera Sans Mono', 'DejaVu Sans Mono', Monaco, Courier, monospace;
+			font-size: 12px;
+			margin: 0;
+			padding: 0 0 0 12px;
+			display: inline-block;
+		}
+
+		.jsondiffpatch-delta pre {
+			font-family: 'Bitstream Vera Sans Mono', 'DejaVu Sans Mono', Monaco, Courier, monospace;
+			font-size: 12px;
+			margin: 0;
+			padding: 0;
+			display: inline-block;
+		}
+
+		ul.jsondiffpatch-delta {
+			list-style-type: none;
+			padding: 0 0 0 20px;
+			margin: 0;
+		}
+
+		.jsondiffpatch-delta ul {
+			list-style-type: none;
+			padding: 0 0 0 20px;
+			margin: 0;
+		}
+
+		.jsondiffpatch-added .jsondiffpatch-property-name,
+		.jsondiffpatch-added .jsondiffpatch-value pre,
+		.jsondiffpatch-modified .jsondiffpatch-right-value pre,
+		.jsondiffpatch-textdiff-added {
+			background: #bbffbb;
+		}
+
+		.jsondiffpatch-deleted .jsondiffpatch-property-name,
+		.jsondiffpatch-deleted pre,
+		.jsondiffpatch-modified .jsondiffpatch-left-value pre,
+		.jsondiffpatch-textdiff-deleted {
+			background: #ffbbbb;
+			text-decoration: line-through;
+		}
+
+		.jsondiffpatch-unchanged,
+		.jsondiffpatch-movedestination {
+			color: gray;
+		}
+
+		.jsondiffpatch-unchanged,
+		.jsondiffpatch-movedestination>.jsondiffpatch-value {
+			transition: all 0.5s;
+			-webkit-transition: all 0.5s;
+			overflow-y: hidden;
+		}
+
+		.jsondiffpatch-unchanged-showing .jsondiffpatch-unchanged,
+		.jsondiffpatch-unchanged-showing .jsondiffpatch-movedestination>.jsondiffpatch-value {
+			max-height: 100px;
+		}
+
+		.jsondiffpatch-unchanged-hidden .jsondiffpatch-unchanged,
+		.jsondiffpatch-unchanged-hidden .jsondiffpatch-movedestination>.jsondiffpatch-value {
+			max-height: 0;
+		}
+
+		.jsondiffpatch-unchanged-hiding .jsondiffpatch-movedestination>.jsondiffpatch-value,
+		.jsondiffpatch-unchanged-hidden .jsondiffpatch-movedestination>.jsondiffpatch-value {
+			display: block;
+		}
+
+		.jsondiffpatch-unchanged-visible .jsondiffpatch-unchanged,
+		.jsondiffpatch-unchanged-visible .jsondiffpatch-movedestination>.jsondiffpatch-value {
+			max-height: 100px;
+		}
+
+		.jsondiffpatch-unchanged-hiding .jsondiffpatch-unchanged,
+		.jsondiffpatch-unchanged-hiding .jsondiffpatch-movedestination>.jsondiffpatch-value {
+			max-height: 0;
+		}
+
+		.jsondiffpatch-unchanged-showing .jsondiffpatch-arrow,
+		.jsondiffpatch-unchanged-hiding .jsondiffpatch-arrow {
+			display: none;
+		}
+
+		.jsondiffpatch-value {
+			display: inline-block;
+		}
+
+		.jsondiffpatch-property-name {
+			display: inline-block;
+			padding-right: 5px;
+			vertical-align: top;
+		}
+
+		.jsondiffpatch-property-name:after {
+			content: ': ';
+		}
+
+		.jsondiffpatch-child-node-type-array>.jsondiffpatch-property-name:after {
+			content: ': [';
+		}
+
+		.jsondiffpatch-child-node-type-array:after {
+			content: '],';
+		}
+
+		div.jsondiffpatch-child-node-type-array:before {
+			content: '[';
+		}
+
+		div.jsondiffpatch-child-node-type-array:after {
+			content: ']';
+		}
+
+		.jsondiffpatch-child-node-type-object>.jsondiffpatch-property-name:after {
+			content: ': {';
+		}
+
+		.jsondiffpatch-child-node-type-object:after {
+			content: '},';
+		}
+
+		div.jsondiffpatch-child-node-type-object:before {
+			content: '{';
+		}
+
+		div.jsondiffpatch-child-node-type-object:after {
+			content: '}';
+		}
+
+		.jsondiffpatch-value pre:after {
+			content: ',';
+		}
+
+		li:last-child>.jsondiffpatch-value pre:after,
+		.jsondiffpatch-modified>.jsondiffpatch-left-value pre:after {
+			content: '';
+		}
+
+		.jsondiffpatch-modified .jsondiffpatch-value {
+			display: inline-block;
+		}
+
+		.jsondiffpatch-modified .jsondiffpatch-right-value {
+			margin-left: 5px;
+		}
+
+		.jsondiffpatch-moved .jsondiffpatch-value {
+			display: none;
+		}
+
+		.jsondiffpatch-moved .jsondiffpatch-moved-destination {
+			display: inline-block;
+			background: #ffffbb;
+			color: #888;
+		}
+
+		.jsondiffpatch-moved .jsondiffpatch-moved-destination:before {
+			content: ' => ';
+		}
+
+		ul.jsondiffpatch-textdiff {
+			padding: 0;
+		}
+
+		.jsondiffpatch-textdiff-location {
+			color: #bbb;
+			display: inline-block;
+			min-width: 60px;
+		}
+
+		.jsondiffpatch-textdiff-line {
+			display: inline-block;
+		}
+
+		.jsondiffpatch-textdiff-line-number:after {
+			content: ',';
+		}
+
+		.jsondiffpatch-error {
+			background: red;
+			color: white;
+			font-weight: bold;
+		}
+
+		.jsondiffpatch-annotated-delta {
+			font-family: 'Bitstream Vera Sans Mono', 'DejaVu Sans Mono', Monaco, Courier, monospace;
+			font-size: 12px;
+			margin: 0;
+			padding: 0 0 0 12px;
+			display: inline-block;
+		}
+
+		.jsondiffpatch-annotated-delta pre {
+			font-family: 'Bitstream Vera Sans Mono', 'DejaVu Sans Mono', Monaco, Courier, monospace;
+			font-size: 12px;
+			margin: 0;
+			padding: 0;
+			display: inline-block;
+		}
+
+		.jsondiffpatch-annotated-delta td {
+			margin: 0;
+			padding: 0;
+		}
+
+		.jsondiffpatch-annotated-delta td pre:hover {
+			font-weight: bold;
+		}
+
+		td.jsondiffpatch-delta-note {
+			font-style: italic;
+			padding-left: 10px;
+		}
+
+		.jsondiffpatch-delta-note>div {
+			margin: 0;
+			padding: 0;
+		}
+
+		.jsondiffpatch-delta-note pre {
+			font-style: normal;
+		}
+
+		.jsondiffpatch-annotated-delta .jsondiffpatch-delta-note {
+			color: #777;
+		}
+
+		.jsondiffpatch-annotated-delta tr:hover {
+			background: #ffc;
+		}
+
+		.jsondiffpatch-annotated-delta tr:hover>td.jsondiffpatch-delta-note {
+			color: black;
+		}
+
+		.jsondiffpatch-error {
+			background: red;
+			color: white;
+			font-weight: bold;
+		}
 	</style>
-</head><body>
-	<h1>WebViewJavascriptBridge Demo</h1>
+</head>
+
+<body>
+	<h1>Json Diff Demo</h1>
 	<script>
-	window.onerror = function(err) {
-		log('window.onerror: ' + err)
-	}
-
-    function setupWebViewJavascriptBridge(callback) {
-        if (window.WebViewJavascriptBridge) { return callback(WebViewJavascriptBridge); }
-        if (window.WVJBCallbacks) { return window.WVJBCallbacks.push(callback); }
-        window.WVJBCallbacks = [callback];
-        var WVJBIframe = document.createElement('iframe');
-        WVJBIframe.style.display = 'none';
-        WVJBIframe.src = 'https://__bridge_loaded__';
-        document.documentElement.appendChild(WVJBIframe);
-        setTimeout(function() { document.documentElement.removeChild(WVJBIframe) }, 0)
-    }
-
-    setupWebViewJavascriptBridge(function(bridge) {
-		var uniqueId = 1
-		function log(message, data) {
-			var log = document.getElementById('log')
-			var el = document.createElement('div')
-			el.className = 'logLine'
-			el.innerHTML = uniqueId++ + '. ' + message + ':<br/>' + JSON.stringify(data)
-			if (log.children.length) { log.insertBefore(el, log.children[0]) }
-			else { log.appendChild(el) }
+		window.onerror = function (err) {
+			log('window.onerror: ' + err)
 		}
 
-		bridge.registerHandler('testJavascriptHandler', function(data, responseCallback) {
-			log('ObjC called testJavascriptHandler with', data)
-			var responseData = { 'Javascript Says':'Right back atcha!' }
-			log('JS responding with', responseData)
-			responseCallback(responseData)
-		})
+		function setupWebViewJavascriptBridge(callback) {
+			if (window.WebViewJavascriptBridge) {
+				return callback(WebViewJavascriptBridge);
+			}
+			if (window.WVJBCallbacks) {
+				return window.WVJBCallbacks.push(callback);
+			}
+			window.WVJBCallbacks = [callback];
+			var WVJBIframe = document.createElement('iframe');
+			WVJBIframe.style.display = 'none';
+			WVJBIframe.src = 'https://__bridge_loaded__';
+			document.documentElement.appendChild(WVJBIframe);
+			setTimeout(function () {
+				document.documentElement.removeChild(WVJBIframe)
+			}, 0)
+		}
 
-		document.body.appendChild(document.createElement('br'))
+		setupWebViewJavascriptBridge(function (bridge) {
 
-		var callbackButton = document.getElementById('buttons').appendChild(document.createElement('button'))
-		callbackButton.innerHTML = 'Fire testObjcCallback'
-		callbackButton.onclick = function(e) {
-			e.preventDefault()
-			log('JS calling handler "testObjcCallback"')
-			bridge.callHandler('testObjcCallback', {'foo': 'bar'}, function(response) {
-				log('JS got response', response)
+			bridge.registerHandler('jsonDiffHandler', function(data, responseCallback){
+				console.log('Objc 调用jsonDiffHandler方法, 参数是:', data)
+
+				var delta = jsondiffpatch.diff(data.left, data.right);
+				
+
+				 // beautiful html diff
+				document.getElementById('visual').innerHTML = jsondiffpatch.formatters.html.format(delta, data.left);
+				// js响应的数据
+				responseCallback(delta)
 			})
-		}
-	})
+		})
 	</script>
-	<div id='buttons'></div> <div id='log'></div>
-</body></html>
+	<div id="visual"></div>
+</body>
+
+</html>

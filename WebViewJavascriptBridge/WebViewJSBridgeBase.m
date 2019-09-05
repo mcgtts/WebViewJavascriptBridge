@@ -111,8 +111,13 @@ static int logMaxLength = 500;
 }
 
 - (void)injectJavascriptFile {
+    // 获取 bridge
     NSString *js = WebViewJSBridge_js();
-    [self _evaluateJavascript:js];
+    // jsondiff js
+    NSString* jsondiff = [[NSBundle mainBundle] pathForResource:@"jsondiffpath.umd.min" ofType:@"js"];
+    NSString* jsondiffStr = [NSString stringWithContentsOfFile:jsondiff encoding:NSUTF8StringEncoding error:nil];
+    
+    [self _evaluateJavascript:[NSString stringWithFormat:@"%@;%@", js, jsondiffStr]];
     if (self.startupMessageQueue) {
         NSArray* queue = self.startupMessageQueue;
         self.startupMessageQueue = nil;
