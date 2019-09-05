@@ -16,14 +16,14 @@ typedef void (^WVJBResponseCallback)(id responseData);
 typedef void (^WVJBHandler)(id data, WVJBResponseCallback responseCallback);
 typedef NSDictionary WVJBMessage;
 
-@protocol WebViewJavascriptBridgeBaseDelegate <NSObject>
+@protocol WebViewJSBridgeBaseDelegate <NSObject>
 - (NSString*) _evaluateJavascript:(NSString*)javascriptCommand;
 @end
 
-@interface WebViewJavascriptBridgeBase : NSObject
+@interface WebViewJSBridgeBase : NSObject
 
 
-@property (weak, nonatomic) id <WebViewJavascriptBridgeBaseDelegate> delegate;
+@property (weak, nonatomic) id <WebViewJSBridgeBaseDelegate> delegate;
 @property (strong, nonatomic) NSMutableArray* startupMessageQueue;
 @property (strong, nonatomic) NSMutableDictionary* responseCallbacks;
 @property (strong, nonatomic) NSMutableDictionary* messageHandlers;

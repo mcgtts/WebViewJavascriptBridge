@@ -6,24 +6,24 @@
 //
 
 
-#import "WKWebViewJavascriptBridge.h"
+#import "WKWebViewJSBridge.h"
 
 #if defined supportsWKWebView
 
-@implementation WKWebViewJavascriptBridge {
+@implementation WKWebViewJSBridge {
     __weak WKWebView* _webView;
     __weak id<WKNavigationDelegate> _webViewDelegate;
     long _uniqueId;
-    WebViewJavascriptBridgeBase *_base;
+    WebViewJSBridgeBase *_base;
 }
 
 /* API
  *****/
 
-+ (void)enableLogging { [WebViewJavascriptBridgeBase enableLogging]; }
++ (void)enableLogging { [WebViewJSBridgeBase enableLogging]; }
 
 + (instancetype)bridgeForWebView:(WKWebView*)webView {
-    WKWebViewJavascriptBridge* bridge = [[self alloc] init];
+    WKWebViewJSBridge* bridge = [[self alloc] init];
     [bridge _setupInstance:webView];
     [bridge reset];
     return bridge;
@@ -86,7 +86,7 @@
 - (void) _setupInstance:(WKWebView*)webView {
     _webView = webView;
     _webView.navigationDelegate = self;
-    _base = [[WebViewJavascriptBridgeBase alloc] init];
+    _base = [[WebViewJSBridgeBase alloc] init];
     _base.delegate = self;
 }
 
