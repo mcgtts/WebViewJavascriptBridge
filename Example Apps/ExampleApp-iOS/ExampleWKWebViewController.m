@@ -10,15 +10,21 @@
 #import "WebJsonDiffView.h"
 #import "WebJsonDiffManager.h"
 
+@interface ExampleWKWebViewController()
+
+@property (nonatomic, strong) WebJsonDiffView *diffView;
+
+@end
+
 @implementation ExampleWKWebViewController
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    WebJsonDiffView *diffView = [WebJsonDiffManager sharedInstance].jsonDiffView;
-    diffView.frame = CGRectMake(0, 0, 100, 100);
+     _diffView= [WebJsonDiffManager sharedInstance].jsonDiffView;
+    _diffView.frame = CGRectMake(0, 0, 300, 300);
     
-    [self.view addSubview:diffView];
-    [self renderButtons:diffView];
+    [self.view addSubview:_diffView];
+    [self renderButtons:_diffView];
 }
 
 - (void)renderButtons:(WebJsonDiffView*)webView {
@@ -38,12 +44,20 @@
     [self.view insertSubview:jsonDiffButton aboveSubview:webView];
     jsonDiffButton.frame = CGRectMake(110, 400, 100, 35);
     jsonDiffButton.titleLabel.font = font;
+    
+    UIButton *sizebackButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [sizebackButton setTitle:@"web size +" forState:UIControlStateNormal];
+    [sizebackButton addTarget:self action:@selector(sizePlusHandler:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view insertSubview:sizebackButton aboveSubview:webView];
+    sizebackButton.frame = CGRectMake(210, 400, 100, 35);
+    sizebackButton.titleLabel.font = font;
 }
 
 - (void)callHandler:(id)sender {
-    [[WebJsonDiffManager sharedInstance] callData:@{@"left": @{ @"a": @1, @"b": @[@1] , @"d": @"2", @"f": @"1111"}, @"right":@{@"b": @2} } responseCallback:^(id responseData) {
+    [[WebJsonDiffManager sharedInstance] callData:@{@"left": @{ @"a": @1, @"b": @[@1] , @"d": @"2", @"f": @"1111fjdslfjdlsfjkldsjfldsjfldsjfldsjflksjflskjflsjflkdsjfldksjfkldsjfldskjfsdl"}, @"right":@{@"b": @2} } responseCallback:^(id responseData) {
         NSLog(@"testJavascriptHandler responded: %@", responseData);
     }];
+   
 }
 
 - (void)jsonDiffHandler:(id)sender {
@@ -51,5 +65,10 @@
         NSLog(@"testJavascriptHandler responded: %@", responseData);
     }];
 }
+
+- (void)sizePlusHandler:(id)sender {
+    _diffView.frame = CGRectMake(0, 0, _diffView.frame.size.width + 10 , _diffView.frame.size.height + 10);
+}
+
 
 @end

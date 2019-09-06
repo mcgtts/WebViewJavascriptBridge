@@ -48,7 +48,7 @@
 }
 
 - (void)loadWebPage:(WKWebView *)webView{
-    NSString* htmlPath = [[NSBundle mainBundle] pathForResource:@"ExampleApp" ofType:@"html"];
+    NSString* htmlPath = [[NSBundle mainBundle] pathForResource:@"JsonDiffApp" ofType:@"html"];
     NSString* appHtml = [NSString stringWithContentsOfFile:htmlPath encoding:NSUTF8StringEncoding error:nil];
     NSURL *baseURL = [NSURL fileURLWithPath:htmlPath];
     [webView loadHTMLString:appHtml baseURL:baseURL];

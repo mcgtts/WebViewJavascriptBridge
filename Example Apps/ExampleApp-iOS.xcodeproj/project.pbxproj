@@ -14,7 +14,7 @@
 		21AA53142320F4370027102C /* jsondiffpath.umd.min.js in Resources */ = {isa = PBXBuildFile; fileRef = 21AA53132320F4370027102C /* jsondiffpath.umd.min.js */; };
 		21AA5317232134300027102C /* WebJsonDiffView.m in Sources */ = {isa = PBXBuildFile; fileRef = 21AA5316232134300027102C /* WebJsonDiffView.m */; };
 		21AA531A232139520027102C /* WebJsonDiffManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 21AA5319232139520027102C /* WebJsonDiffManager.m */; };
-		21AA531D2322124C0027102C /* ExampleApp.html in Resources */ = {isa = PBXBuildFile; fileRef = 21AA531C2322124C0027102C /* ExampleApp.html */; };
+		21AA531D2322124C0027102C /* JsonDiffApp.html in Resources */ = {isa = PBXBuildFile; fileRef = 21AA531C2322124C0027102C /* JsonDiffApp.html */; };
 		2C3E7C461C5A890A00A1E322 /* WebViewJSBridge_JS.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C3E7C451C5A890A00A1E322 /* WebViewJSBridge_JS.m */; };
 		2CA045BF17117439006DEE8B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2CA045B717117439006DEE8B /* InfoPlist.strings */; };
 		2CA045C217117439006DEE8B /* ExampleAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CA045BD17117439006DEE8B /* ExampleAppDelegate.m */; };
@@ -36,7 +36,7 @@
 		21AA5316232134300027102C /* WebJsonDiffView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebJsonDiffView.m; sourceTree = "<group>"; };
 		21AA5318232139520027102C /* WebJsonDiffManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebJsonDiffManager.h; sourceTree = "<group>"; };
 		21AA5319232139520027102C /* WebJsonDiffManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebJsonDiffManager.m; sourceTree = "<group>"; };
-		21AA531C2322124C0027102C /* ExampleApp.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = ExampleApp.html; sourceTree = "<group>"; };
+		21AA531C2322124C0027102C /* JsonDiffApp.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = JsonDiffApp.html; sourceTree = "<group>"; };
 		2C3E7C441C5A890A00A1E322 /* WebViewJSBridge_JS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewJSBridge_JS.h; sourceTree = "<group>"; };
 		2C3E7C451C5A890A00A1E322 /* WebViewJSBridge_JS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewJSBridge_JS.m; sourceTree = "<group>"; };
 		2CA045B817117439006DEE8B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -82,7 +82,7 @@
 			isa = PBXGroup;
 			children = (
 				21AA531E232212970027102C /* WebViewJSBridge */,
-				21AA531C2322124C0027102C /* ExampleApp.html */,
+				21AA531C2322124C0027102C /* JsonDiffApp.html */,
 				21AA53132320F4370027102C /* jsondiffpath.umd.min.js */,
 				21AA5315232134300027102C /* WebJsonDiffView.h */,
 				21AA5316232134300027102C /* WebJsonDiffView.m */,
@@ -214,7 +214,7 @@
 				21AA53142320F4370027102C /* jsondiffpath.umd.min.js in Resources */,
 				2CA045BF17117439006DEE8B /* InfoPlist.strings in Resources */,
 				2CAB869B1727684300BD9ED1 /* Default-568h@2x.png in Resources */,
-				21AA531D2322124C0027102C /* ExampleApp.html in Resources */,
+				21AA531D2322124C0027102C /* JsonDiffApp.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
