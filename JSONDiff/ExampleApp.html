@@ -298,20 +298,27 @@
 
 		setupWebViewJavascriptBridge(function (bridge) {
 
-			bridge.registerHandler('jsonDiffHandler', function(data, responseCallback){
-				console.log('Objc 调用jsonDiffHandler方法, 参数是:', data)
-
+			bridge.registerHandler('jsonDiffVisualHandler', function(data, responseCallback){
+				console.log('Objc 调用jsonDiffHandler方法, 参数是:', data);
 				var delta = jsondiffpatch.diff(data.left, data.right);
-				
 
 				 // beautiful html diff
 				document.getElementById('visual').innerHTML = jsondiffpatch.formatters.html.format(delta, data.left);
 				// js响应的数据
+				responseCallback({"ret": true})
+			})
+
+			bridge.registerHandler('jsonDiffHandler', function(data, responseCallback){
+				console.log('Objc 调用jsonDiffHandler方法, 参数是:', data)
+				var delta = jsondiffpatch.diff(data.left, data.right);
+				// js响应的数据
 				responseCallback(delta)
 			})
+
 		})
 	</script>
 	<div id="visual"></div>
+</body>
 </body>
 
 </html>

@@ -7,43 +7,21 @@
 //
 
 #import "ExampleWKWebViewController.h"
-#import "WKWebViewJSBridge.h"
-
-@interface ExampleWKWebViewController ()
-
-@property WKWebViewJSBridge* bridge;
-
-@end
+#import "WebJsonDiffView.h"
+#import "WebJsonDiffManager.h"
 
 @implementation ExampleWKWebViewController
 
-- (void)viewWillAppear:(BOOL)animated {
-    if (_bridge) { return; }
+- (void)viewWillAppear:(BOOL)animated
+{
+    WebJsonDiffView *diffView = [WebJsonDiffManager sharedInstance].jsonDiffView;
+    diffView.frame = CGRectMake(0, 0, 100, 100);
     
-    WKWebView* webView = [[NSClassFromString(@"WKWebView") alloc] initWithFrame:self.view.bounds];
-    webView.navigationDelegate = self;
-    [self.view addSubview:webView];
-    [WKWebViewJSBridge enableLogging];
-    _bridge = [WKWebViewJSBridge bridgeForWebView:webView];
-    [_bridge setWebViewDelegate:self];
-    
-    [_bridge callHandler:@"jsonDiffHandler" data:@{@"left":@{@"a": @1}, @"right":@{@"b": @2} } responseCallback:^(id response) {
-        NSLog(@"testJavascriptHandler responded: %@", response);
-    }];
-    
-    [self renderButtons:webView];
-    [self loadExamplePage:webView];
+    [self.view addSubview:diffView];
+    [self renderButtons:diffView];
 }
 
-- (void)webView:(WKWebView *)webView didStartProvisionalNavigation:(WKNavigation *)navigation {
-    NSLog(@"webViewDidStartLoad");
-}
-
-- (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation {
-    NSLog(@"webViewDidFinishLoad");
-}
-
-- (void)renderButtons:(WKWebView*)webView {
+- (void)renderButtons:(WebJsonDiffView*)webView {
     UIFont* font = [UIFont fontWithName:@"HelveticaNeue" size:12.0];
     
     UIButton *callbackButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
@@ -63,22 +41,15 @@
 }
 
 - (void)callHandler:(id)sender {
-    [_bridge callHandler:@"jsonDiffHandler" data:@{@"left": @{ @"a": @1, @"b": @[@1] , @"d": @"2", @"f": @"1111"}, @"right":@{@"b": @2} } responseCallback:^(id response) {
-        NSLog(@"testJavascriptHandler responded: %@", response);
+    [[WebJsonDiffManager sharedInstance] callData:@{@"left": @{ @"a": @1, @"b": @[@1] , @"d": @"2", @"f": @"1111"}, @"right":@{@"b": @2} } responseCallback:^(id responseData) {
+        NSLog(@"testJavascriptHandler responded: %@", responseData);
     }];
 }
 
 - (void)jsonDiffHandler:(id)sender {
-    [_bridge callHandler:@"jsonDiffHandler" data:@{@"left":@{@"a": @1}, @"right":@{@"b": @2} } responseCallback:^(id response) {
-        NSLog(@"testJavascriptHandler responded: %@", response);
+    [[WebJsonDiffManager sharedInstance] callData:@{@"left":@{@"a": @1}, @"right":@{@"b": @2} } responseCallback:^(id responseData) {
+        NSLog(@"testJavascriptHandler responded: %@", responseData);
     }];
 }
 
-- (void)loadExamplePage:(WKWebView*)webView {
-    NSString* htmlPath = [[NSBundle mainBundle] pathForResource:@"ExampleApp" ofType:@"html"];
-    NSString* appHtml = [NSString stringWithContentsOfFile:htmlPath encoding:NSUTF8StringEncoding error:nil];
-    NSURL *baseURL = [NSURL fileURLWithPath:htmlPath];
-    [webView loadHTMLString:appHtml baseURL:baseURL];
-    
-}
 @end
