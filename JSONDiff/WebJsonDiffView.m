@@ -48,7 +48,14 @@
 }
 
 - (void)loadWebPage:(WKWebView *)webView{
-    NSString* htmlPath = [[NSBundle mainBundle] pathForResource:@"JsonDiffApp" ofType:@"html"];
+    NSURL *bundleURL = [[NSBundle mainBundle] URLForResource:@"LogJsonDiffBundle" withExtension:@"bundle"];
+    NSBundle *bundle = nil;
+    if (bundleURL) {
+        bundle = [NSBundle bundleWithURL:bundleURL];
+    }else{
+        bundle = [NSBundle mainBundle];
+    }
+    NSString* htmlPath =  [bundle pathForResource:@"JsonDiffApp" ofType:@"html"];
     NSString* appHtml = [NSString stringWithContentsOfFile:htmlPath encoding:NSUTF8StringEncoding error:nil];
     NSURL *baseURL = [NSURL fileURLWithPath:htmlPath];
     [webView loadHTMLString:appHtml baseURL:baseURL];

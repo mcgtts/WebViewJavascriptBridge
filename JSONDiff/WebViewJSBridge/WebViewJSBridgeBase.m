@@ -114,7 +114,14 @@ static int logMaxLength = 500;
     // 获取 bridge
     NSString *js = WebViewJSBridge_js();
     // jsondiff js
-    NSString* jsondiff = [[NSBundle mainBundle] pathForResource:@"jsondiffpath.umd.min" ofType:@"js"];
+    NSURL *bundleURL = [[NSBundle mainBundle] URLForResource:@"LogJsonDiffBundle" withExtension:@"bundle"];
+    NSBundle *bundle = nil;
+    if (bundleURL) {
+        bundle = [NSBundle bundleWithURL:bundleURL];
+    }else{
+        bundle = [NSBundle mainBundle];
+    }
+    NSString* jsondiff = [bundle pathForResource:@"jsondiffpath.umd.min" ofType:@"js"];
     NSString* jsondiffStr = [NSString stringWithContentsOfFile:jsondiff encoding:NSUTF8StringEncoding error:nil];
     
     [self _evaluateJavascript:[NSString stringWithFormat:@"%@;%@", js, jsondiffStr]];

@@ -30,8 +30,16 @@ NSString * WebViewJSBridge_js() {
 		callHandler: callHandler,
 		disableJavscriptAlertBoxSafetyTimeout: disableJavscriptAlertBoxSafetyTimeout,
 		_fetchQueue: _fetchQueue,
-		_handleMessageFromObjC: _handleMessageFromObjC
+		_handleMessageFromObjC: _handleMessageFromObjC,
+        logScoce: logScoce,
 	};
+        
+        function logScoce(left, right, responseCallback){
+            // 较准 left 的通配符
+            var delta = jsondiffpatch.diff(left, right);
+            // 得分打分
+            responseCallback({"ret": true, "data": {"score": 10, diffResult: delta}})
+        }
 
 	var messagingIframe;
 	var sendMessageQueue = [];

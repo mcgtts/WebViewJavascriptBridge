@@ -11,10 +11,11 @@
 		0E50601C1A01B442000BEEEA /* WebViewJSBridgeBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E50601B1A01B442000BEEEA /* WebViewJSBridgeBase.m */; };
 		0E8082DB19EDC32300479452 /* WKWebViewJSBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E8082DA19EDC32300479452 /* WKWebViewJSBridge.m */; };
 		0ECB01441A0EE1F20037FF4E /* ExampleWKWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ECB01431A0EE1F20037FF4E /* ExampleWKWebViewController.m */; };
-		21AA53142320F4370027102C /* jsondiffpath.umd.min.js in Resources */ = {isa = PBXBuildFile; fileRef = 21AA53132320F4370027102C /* jsondiffpath.umd.min.js */; };
 		21AA5317232134300027102C /* WebJsonDiffView.m in Sources */ = {isa = PBXBuildFile; fileRef = 21AA5316232134300027102C /* WebJsonDiffView.m */; };
 		21AA531A232139520027102C /* WebJsonDiffManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 21AA5319232139520027102C /* WebJsonDiffManager.m */; };
-		21AA531D2322124C0027102C /* JsonDiffApp.html in Resources */ = {isa = PBXBuildFile; fileRef = 21AA531C2322124C0027102C /* JsonDiffApp.html */; };
+		21E9725823223EEA00DFABD0 /* JsonDiffApp.html in Resources */ = {isa = PBXBuildFile; fileRef = 21AA531C2322124C0027102C /* JsonDiffApp.html */; };
+		21E9725C23223FDC00DFABD0 /* jsondiffpath.umd.min.js in Resources */ = {isa = PBXBuildFile; fileRef = 21AA53132320F4370027102C /* jsondiffpath.umd.min.js */; };
+		21E9725D2322411D00DFABD0 /* LogJsonDiffBundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 21E9725223223E7200DFABD0 /* LogJsonDiffBundle.bundle */; };
 		2C3E7C461C5A890A00A1E322 /* WebViewJSBridge_JS.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C3E7C451C5A890A00A1E322 /* WebViewJSBridge_JS.m */; };
 		2CA045BF17117439006DEE8B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2CA045B717117439006DEE8B /* InfoPlist.strings */; };
 		2CA045C217117439006DEE8B /* ExampleAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CA045BD17117439006DEE8B /* ExampleAppDelegate.m */; };
@@ -22,6 +23,16 @@
 		2CAB869B1727684300BD9ED1 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CAB869A1727684300BD9ED1 /* Default-568h@2x.png */; };
 		2CEB3EC01602563600548120 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CEB3EBF1602563600548120 /* UIKit.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		21E9725A23223F0500DFABD0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2CEB3EB21602563600548120 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 21E9725123223E7200DFABD0;
+			remoteInfo = LogJsonDiffBundle;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		0E50601B1A01B442000BEEEA /* WebViewJSBridgeBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewJSBridgeBase.m; sourceTree = "<group>"; };
@@ -37,6 +48,8 @@
 		21AA5318232139520027102C /* WebJsonDiffManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebJsonDiffManager.h; sourceTree = "<group>"; };
 		21AA5319232139520027102C /* WebJsonDiffManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebJsonDiffManager.m; sourceTree = "<group>"; };
 		21AA531C2322124C0027102C /* JsonDiffApp.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = JsonDiffApp.html; sourceTree = "<group>"; };
+		21E9725223223E7200DFABD0 /* LogJsonDiffBundle.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LogJsonDiffBundle.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		21E9725423223E7200DFABD0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2C3E7C441C5A890A00A1E322 /* WebViewJSBridge_JS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewJSBridge_JS.h; sourceTree = "<group>"; };
 		2C3E7C451C5A890A00A1E322 /* WebViewJSBridge_JS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewJSBridge_JS.m; sourceTree = "<group>"; };
 		2CA045B817117439006DEE8B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -53,6 +66,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		21E9724F23223E7200DFABD0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2CEB3EB81602563600548120 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -78,12 +98,18 @@
 			path = WebViewJSBridge;
 			sourceTree = "<group>";
 		};
+		21E9725323223E7200DFABD0 /* LogJsonDiff */ = {
+			isa = PBXGroup;
+			children = (
+				21E9725423223E7200DFABD0 /* Info.plist */,
+			);
+			path = LogJsonDiff;
+			sourceTree = "<group>";
+		};
 		2C1562A7176B9F5400B4AE50 /* JSONDiff */ = {
 			isa = PBXGroup;
 			children = (
 				21AA531E232212970027102C /* WebViewJSBridge */,
-				21AA531C2322124C0027102C /* JsonDiffApp.html */,
-				21AA53132320F4370027102C /* jsondiffpath.umd.min.js */,
 				21AA5315232134300027102C /* WebJsonDiffView.h */,
 				21AA5316232134300027102C /* WebJsonDiffView.m */,
 				21AA5318232139520027102C /* WebJsonDiffManager.h */,
@@ -109,6 +135,8 @@
 		2CA046211711A94E006DEE8B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				21AA531C2322124C0027102C /* JsonDiffApp.html */,
+				21AA53132320F4370027102C /* jsondiffpath.umd.min.js */,
 				2CA045B717117439006DEE8B /* InfoPlist.strings */,
 				2CA045B917117439006DEE8B /* ExampleApp-iOS-Info.plist */,
 				2CA045BA17117439006DEE8B /* ExampleApp-iOS-Prefix.pch */,
@@ -122,6 +150,7 @@
 			children = (
 				2CAB869A1727684300BD9ED1 /* Default-568h@2x.png */,
 				2CA045B617117439006DEE8B /* ExampleApp-iOS */,
+				21E9725323223E7200DFABD0 /* LogJsonDiff */,
 				2CEB3EBE1602563600548120 /* Frameworks */,
 				2CEB3EBC1602563600548120 /* Products */,
 				81A733051B2F9C5795D856E4 /* Pods */,
@@ -132,6 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				2CEB3EBB1602563600548120 /* ExampleApp-iOS.app */,
+				21E9725223223E7200DFABD0 /* LogJsonDiffBundle.bundle */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -157,6 +187,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		21E9725123223E7200DFABD0 /* LogJsonDiffBundle */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 21E9725723223E7200DFABD0 /* Build configuration list for PBXNativeTarget "LogJsonDiffBundle" */;
+			buildPhases = (
+				21E9724E23223E7200DFABD0 /* Sources */,
+				21E9724F23223E7200DFABD0 /* Frameworks */,
+				21E9725023223E7200DFABD0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LogJsonDiffBundle;
+			productName = LogJsonDiff;
+			productReference = 21E9725223223E7200DFABD0 /* LogJsonDiffBundle.bundle */;
+			productType = "com.apple.product-type.bundle";
+		};
 		2CEB3EBA1602563600548120 /* ExampleApp-iOS */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2CEB3ED31602563600548120 /* Build configuration list for PBXNativeTarget "ExampleApp-iOS" */;
@@ -168,6 +215,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				21E9725B23223F0500DFABD0 /* PBXTargetDependency */,
 			);
 			name = "ExampleApp-iOS";
 			productName = ExampleApp;
@@ -183,6 +231,10 @@
 				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = "Marcus Westin";
 				TargetAttributes = {
+					21E9725123223E7200DFABD0 = {
+						CreatedOnToolsVersion = 10.3;
+						ProvisioningStyle = Automatic;
+					};
 					2CEB3EBA1602563600548120 = {
 						LastSwiftMigration = 0820;
 					};
@@ -202,25 +254,41 @@
 			projectRoot = "";
 			targets = (
 				2CEB3EBA1602563600548120 /* ExampleApp-iOS */,
+				21E9725123223E7200DFABD0 /* LogJsonDiffBundle */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		21E9725023223E7200DFABD0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				21E9725C23223FDC00DFABD0 /* jsondiffpath.umd.min.js in Resources */,
+				21E9725823223EEA00DFABD0 /* JsonDiffApp.html in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2CEB3EB91602563600548120 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				21AA53142320F4370027102C /* jsondiffpath.umd.min.js in Resources */,
+				21E9725D2322411D00DFABD0 /* LogJsonDiffBundle.bundle in Resources */,
 				2CA045BF17117439006DEE8B /* InfoPlist.strings in Resources */,
 				2CAB869B1727684300BD9ED1 /* Default-568h@2x.png in Resources */,
-				21AA531D2322124C0027102C /* JsonDiffApp.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		21E9724E23223E7200DFABD0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2CEB3EB71602563600548120 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -238,6 +306,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		21E9725B23223F0500DFABD0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 21E9725123223E7200DFABD0 /* LogJsonDiffBundle */;
+			targetProxy = 21E9725A23223F0500DFABD0 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		2CA045B717117439006DEE8B /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
@@ -250,6 +326,92 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		21E9725523223E7200DFABD0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = LogJsonDiff/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = org.bigfree.LogJsonDiff;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
+				VALID_ARCHS = "arm64 armv7 armv7s x86_64 i386";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
+		21E9725623223E7200DFABD0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = LogJsonDiff/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = org.bigfree.LogJsonDiff;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
+				VALID_ARCHS = "arm64 armv7 armv7s x86_64 i386";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
 		2CEB3ED11602563600548120 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -361,6 +523,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		21E9725723223E7200DFABD0 /* Build configuration list for PBXNativeTarget "LogJsonDiffBundle" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				21E9725523223E7200DFABD0 /* Debug */,
+				21E9725623223E7200DFABD0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		2CEB3EB51602563600548120 /* Build configuration list for PBXProject "ExampleApp-iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
